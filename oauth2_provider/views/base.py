@@ -8,7 +8,7 @@ from django.utils.decorators import method_decorator
 
 from oauthlib.oauth2 import Server
 
-from braces.views import LoginRequiredMixin, CsrfExemptMixin
+from braces.views import CsrfExemptMixin
 
 from ..settings import oauth2_settings
 from ..exceptions import OAuthToolkitError
@@ -20,7 +20,7 @@ from .mixins import OAuthLibMixin
 log = logging.getLogger('oauth2_provider')
 
 
-class BaseAuthorizationView(LoginRequiredMixin, OAuthLibMixin, View):
+class BaseAuthorizationView(OAuthLibMixin, View):
     """
     Implements a generic endpoint to handle *Authorization Requests* as in :rfc:`4.1.1`. The view
     does not implement any strategy to determine *authorize/do not authorize* logic.
